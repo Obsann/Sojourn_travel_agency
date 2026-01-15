@@ -1,0 +1,89 @@
+<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="px-4 py-6 sm:px-0">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">My Dashboard</h1>
+
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        My Bookings
+                    </h3>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                        Manage your upcoming trips.
+                    </p>
+                </div>
+                <a href="{{base_url}}/public/search.php"
+                    class="bg-brand-600 text-white px-4 py-2 rounded-md text-sm">Book New
+                    Trip</a>
+            </div>
+            <div class="border-t border-gray-200">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Booking ID</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Package</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Date</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            {{booking_rows}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                    Profile Information
+                </h3>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
+                <form action="{{base_url}}/public/customer/dashboard.php" method="POST" class="max-w-xl">
+                    <input type="hidden" name="action" value="update_profile">
+
+                    <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6 mb-4">
+                        <div class="sm:col-span-4">
+                            <label class="block text-sm font-medium text-gray-700">Email (Read Only)</label>
+                            <input type="text" value="{{user_email}}" disabled
+                                class="mt-1 block w-full bg-gray-100 border-gray-300 rounded-md shadow-sm sm:text-sm border p-2 text-gray-500">
+                        </div>
+
+                        <div class="sm:col-span-4">
+                            <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" name="fullname" value="{{fullname}}"
+                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm border p-2">
+                        </div>
+
+                        <div class="sm:col-span-4">
+                            <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="text" name="phone" value="{{phone}}"
+                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm sm:text-sm border p-2">
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="bg-brand-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-brand-700">
+                        Update Profile
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
